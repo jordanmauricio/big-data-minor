@@ -9,3 +9,5 @@ https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeac
 
 <b>For Oliver:</b>
 This means that we can get access to the data, but of course at a limit of the API, therefore we're working out on a way to write the objects to a JSON object file which we can then import to Alteryx and/or Tableu as necesarry.  
+
+Images of Data: http://imgur.com/a/CV8wP
