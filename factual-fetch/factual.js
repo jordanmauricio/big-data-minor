@@ -16,25 +16,27 @@ app.listen(3434, function(){
 	console.log('Magic happens on port 3434');
 
 	//  search for Starbucks in New York
-	factual.get('/t/places-us', {q:"starbucks", filters:{"locality":"new york"}}, function (error, res) {
-		console.log('### STARBUCKS ###');
-	  	console.log(res.data);
+	factual.get('/t/places-us', {q:"restaurants", filters:{"locality":"new york"}}, function (error, res) {
+		console.log('### RESTAURANTS ###');
+	  	var factualArray = [];
 
-	  	// add each individual JSON object to the text file
+	  	// add each individual JSON object to the text
 	  	for (var i = 0; i < res.data.length; i++){
 
-	  		var factualData = JSON.stringify(res.data[i]);
-	  		var jsonFData = factualData + ", ";
-	  		fs.appendFile('factual.txt', jsonFData, (err) => {
-	  			if (err) throw err;
-	  			console.log("It's saved.");
-	  		});
+	  		factualArray.push(res.data[i]);
+
 	  	}
+
+  		fs.appendFile('factual.txt', JSON.stringify(factualArray), (err) => {
+  			if (err) throw err;
+  			console.log("It's saved.");
+  		});
+
 	});
 
 	//  search restaurants or bars in New York
-	factual.get('/t/places-us', {filters:{category_ids:{"$includes_any":[312,347]}}}, function (error, res) {
-		console.log('### GENERAL ###');
-	  	console.log(res.data);
-	});
+	//factual.get('/t/places-us', {filters:{category_ids:{"$includes_any":[312,347]}}}, function (error, res) {
+	//	console.log('### GENERAL ###');
+	//  	console.log(res.data);
+	//});
 });
