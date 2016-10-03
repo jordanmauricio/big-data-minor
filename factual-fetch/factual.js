@@ -1,5 +1,5 @@
 var Factual = require('factual-api');
-var factual = new Factual('B9DC2ZrFHsqkvlo3C6zrfntMjrcwvH51PVBDFrIf', 'pSAbFJYMcdd9swXOpGPBwhNLGORB3OP1rmKadsna');
+var factual = new Factual('KEY', 'SECRET');
 var fs = require('fs');
 var monkey = require('node-monkey').start({host: "127.0.0.1", port:"50500"});
 var express = require('express');
