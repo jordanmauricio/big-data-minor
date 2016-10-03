@@ -19,8 +19,8 @@ app.listen(3434, function(){
 	factual.get('/t/places-us', {q:"starbucks", filters:{"locality":"new york"}}, function (error, res) {
 		console.log('### STARBUCKS ###');
 	  	console.log(res.data);
-	  	//console.log(__dirname);
 
+	  	// add each individual JSON object to the text file
 	  	for (var i = 0; i < res.data.length; i++){
 
 	  		var factualData = JSON.stringify(res.data[i]);
@@ -29,13 +29,6 @@ app.listen(3434, function(){
 	  			if (err) throw err;
 	  			console.log("It's saved.");
 	  		});
-	  		// var txtFile = __dirname + "data.txt";
-	  		// var file = new File(txtFile);
-	  		// var str = JSON.stringify(res.data[i]);
-
-	  		// var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(str);
-
-	  		// var link = document.getElementById('link').href = dataUri;
 	  	}
 	});
 
