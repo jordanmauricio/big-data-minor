@@ -1,5 +1,5 @@
 var Factual = require('factual-api');
-var factual = new Factual('KEY', 'SECRET');
+var factual = new Factual('B9DC2ZrFHsqkvlo3C6zrfntMjrcwvH51PVBDFrIf', 'pSAbFJYMcdd9swXOpGPBwhNLGORB3OP1rmKadsna');
 var fs = require('fs');
 var monkey = require('node-monkey').start({host: "127.0.0.1", port:"50500"});
 var express = require('express');
@@ -16,8 +16,8 @@ app.listen(3434, function(){
 	console.log('Magic happens on port 3434');
 
 	//  search for Starbucks in New York
-	factual.get('/t/places-us', {q:"restaurants", filters:{"locality":"new york"}}, function (error, res) {
-		console.log('### RESTAURANTS ###');
+	factual.get('/t/places-us', {filters:{"$and":[{category_ids:{"$includes":107}},{"locality":"new york"}]}}, function (error, res) {
+		console.log('### STARBUCKS ###');
 	  	var factualArray = [];
 
 	  	// add each individual JSON object to the text
@@ -27,7 +27,7 @@ app.listen(3434, function(){
 
 	  	}
 
-  		fs.appendFile('factual.txt', JSON.stringify(factualArray), (err) => {
+  		fs.appendFile('attractions.txt', JSON.stringify(factualArray), (err) => {
   			if (err) throw err;
   			console.log("It's saved.");
   		});
